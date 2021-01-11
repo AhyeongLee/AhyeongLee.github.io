@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 500px;
+        }
+        ::selection {
+            background-color: none;
+        }
+        a {
+            position: fixed;
+            bottom: 0;
+        }
+
+        .container {
+            position: relative;
+            border-radius: 10px;
+            width: 300px;
+            height: 400px;
+            background-color: #eee;
+            transform-style: preserve-3d;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+        h1 {
+            font-family: 'VT323', monospace;
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 0.5em;
+            font-weight: bold;
+            transform: translateZ(40px);
+
+        }
+        .figure {
+            width: 50%;
+            position: absolute;
+        }
+        img {
+            width: 100%;
+        }
+        .figure:nth-of-type(1) {
+            top: 20%;
+            left: 10%;
+            transform: translateZ(50px);
+        }
+        .figure:nth-of-type(2) {
+            top: 25%;
+            left: 50%;
+            transform: translateZ(70px);
+        }
+        .figure:nth-of-type(3) {
+            top: 50%;
+            left: 15%;
+            transform: translateZ(100px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Drag Me</h1>
+        <figure class="figure">
+            <img src="../images/pokemon.png" alt="finger-flick">
+        </figure>
+        <figure class="figure">
+            <img src="../images/pokemon2.png" alt="finger-flick">
+        </figure>
+        <figure class="figure">
+            <img src="../images/pokemon3.png" alt="finger-flick">
+        </figure>
+    </div>
+    <a href="//www.pngegg.com/">Images: pngegg.com</a>
+</body>
+</html>
