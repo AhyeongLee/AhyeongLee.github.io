@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 const btn = document.querySelector('.add-ball-btn');
-
+const radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
 class Ball {
     constructor(x, y, r, vx, vy) {
         this.x = x;
@@ -73,13 +73,9 @@ const onDown = (e) => {
 
 }
 
-function getRandomArbitrary(min, max) {
+const getRandomArbitrary = (min, max) => {
     return Math.random() * (max - min) + min;
 }
-  
-onResize();
-const balls = [];
-balls.push(new Ball(getRandomArbitrary(50, canvas.width - 50), getRandomArbitrary(50, canvas.height - 50), 50, getRandomArbitrary(5, 20), getRandomArbitrary(5, 30)));
 
 const drawCanvas = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -87,10 +83,16 @@ const drawCanvas = () => {
     requestAnimationFrame(drawCanvas);
 
 }
+  
+onResize();
+const balls = [];
+balls.push(new Ball(getRandomArbitrary(radius, canvas.width - radius), getRandomArbitrary(radius, canvas.height - radius), radius, getRandomArbitrary(5, 20), getRandomArbitrary(5, 30)));
+
+
 drawCanvas();
 
 window.addEventListener('resize', onResize);
 window.addEventListener('pointerdown', onDown);
 btn.addEventListener('click', () => {
-    balls.push(new Ball(getRandomArbitrary(50, canvas.width - 50), getRandomArbitrary(50, canvas.height - 50), 50, getRandomArbitrary(5, 20), getRandomArbitrary(5, 30)));
+    balls.push(new Ball(getRandomArbitrary(radius, canvas.width - radius), getRandomArbitrary(radius, canvas.height - radius), radius, getRandomArbitrary(5, 20), getRandomArbitrary(5, 30)));
 });
