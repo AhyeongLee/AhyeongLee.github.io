@@ -32,10 +32,10 @@ class Ball {
     };
 
     bouncBall = () => {
-        if (this.x <= 0 || this.x >= document.body.clientWidth) {
+        if (this.x <= 0 || this.x >= viewWidth) {
             this.vx *= -1;
         }
-        if (this.y <= 0 || this.y >= document.body.clientHeight) {
+        if (this.y <= 0 || this.y >= viewHeight) {
             this.vy *= -1;
         }
     }
