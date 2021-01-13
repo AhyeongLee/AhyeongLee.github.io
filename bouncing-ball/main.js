@@ -4,6 +4,8 @@ const btn = document.querySelector('.add-ball-btn');
 const radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
 const pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
 const colorsOfBall = ['#0583F2', '#056CF2', '#0554F2'];
+let viewWidth;
+let viewHeight;
 
 class Ball {
     constructor(x, y, r, vx, vy) {
@@ -15,11 +17,11 @@ class Ball {
         this.originalVX = vx;
         this.originalVY = vy;
         this.color = colorsOfBall[Math.round(getRandomArbitrary(0, colorsOfBall.length-1))];
+        // console.log(x, y);
         
     };
 
     draw = () => {
-        // context.clearRect(0, 0, canvas.width, canvas.height);
         context.beginPath();
         context.fillStyle = this.color;
         context.arc(this.x, this.y, this.r, 0, Math.PI*2, false);
@@ -27,14 +29,13 @@ class Ball {
         this.x += this.vx;
         this.y += this.vy;
         this.bouncBall();
-        // window.requestAnimationFrame(this.draw);
     };
 
     bouncBall = () => {
-        if (this.x <= 0 || this.x >= canvas.width) {
+        if (this.x <= 0 || this.x >= document.body.clientWidth) {
             this.vx *= -1;
         }
-        if (this.y <= 0 || this.y >= canvas.height) {
+        if (this.y <= 0 || this.y >= document.body.clientHeight) {
             this.vy *= -1;
         }
     }
@@ -42,8 +43,11 @@ class Ball {
 
 
 const onResize = () => {
-    canvas.width = document.body.clientWidth * pixelRatio;
-    canvas.height = document.body.clientHeight * pixelRatio;
+    viewWidth = document.body.clientWidth;
+    viewHeight = document.body.clientHeight;
+    canvas.width = viewWidth * pixelRatio;
+    canvas.height = viewHeight * pixelRatio;
+    context.scale(pixelRatio, pixelRatio);
 };
 const onDown = (e) => {
     if (e.target.tagName === 'A') return;
@@ -78,11 +82,12 @@ const onDown = (e) => {
 }
 
 const getRandomArbitrary = (min, max) => {
+    // console.log(min, max);
     return Math.random() * (max - min) + min;
 }
 
 const drawCanvas = () => {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, viewWidth, viewHeight);
     balls.forEach(ball => ball.draw());
     requestAnimationFrame(drawCanvas);
 
@@ -90,7 +95,12 @@ const drawCanvas = () => {
   
 onResize();
 const balls = [];
-balls.push(new Ball(getRandomArbitrary(radius, canvas.width - radius * pixelRatio), getRandomArbitrary(radius, canvas.height - radius * pixelRatio), radius * pixelRatio, getRandomArbitrary(5, (radius/3)/pixelRatio), getRandomArbitrary(5, (radius/3)/pixelRatio)));
+balls.push(new Ball(
+    getRandomArbitrary(radius, viewWidth - radius), 
+    getRandomArbitrary(radius, viewHeight - radius), 
+    radius, 
+    getRandomArbitrary(5, (radius/3)), 
+    getRandomArbitrary(5, (radius/3))));
 
 
 drawCanvas();
@@ -98,5 +108,10 @@ drawCanvas();
 window.addEventListener('resize', onResize);
 window.addEventListener('pointerdown', onDown);
 btn.addEventListener('click', () => {
-    balls.push(new Ball(getRandomArbitrary(radius, canvas.width - radius * pixelRatio), getRandomArbitrary(radius, canvas.height - radius * pixelRatio), radius * pixelRatio, getRandomArbitrary(5, (radius/3)/pixelRatio), getRandomArbitrary(5, (radius/3)/pixelRatio)));
+    balls.push(new Ball(
+        getRandomArbitrary(radius, viewWidth - radius), 
+        getRandomArbitrary(radius, viewHeight - radius), 
+        radius, 
+        getRandomArbitrary(5, (radius/4)), 
+        getRandomArbitrary(5, (radius/4))));
 });
