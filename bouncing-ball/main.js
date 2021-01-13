@@ -1,9 +1,11 @@
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 const btn = document.querySelector('.add-ball-btn');
+
 const radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
 const pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
 const colorsOfBall = ['#0583F2', '#056CF2', '#0554F2'];
+const balls = [];
 let viewWidth;
 let viewHeight;
 
@@ -92,18 +94,19 @@ const drawCanvas = () => {
     requestAnimationFrame(drawCanvas);
 
 }
-  
-onResize();
-const balls = [];
-balls.push(new Ball(
-    getRandomArbitrary(radius, viewWidth - radius), 
-    getRandomArbitrary(radius, viewHeight - radius), 
-    radius, 
-    getRandomArbitrary(5, (radius/3)), 
-    getRandomArbitrary(5, (radius/3))));
 
+window.addEventListener('load',  () => {
+    onResize();
+    balls.push(new Ball(
+        getRandomArbitrary(radius, viewWidth - radius), 
+        getRandomArbitrary(radius, viewHeight - radius), 
+        radius, 
+        getRandomArbitrary(5, (radius/3)), 
+        getRandomArbitrary(5, (radius/3)))
+    );
+    drawCanvas();
+});
 
-drawCanvas();
 
 window.addEventListener('resize', onResize);
 window.addEventListener('pointerdown', onDown);
@@ -113,5 +116,6 @@ btn.addEventListener('click', () => {
         getRandomArbitrary(radius, viewHeight - radius), 
         radius, 
         getRandomArbitrary(5, (radius/4)), 
-        getRandomArbitrary(5, (radius/4))));
+        getRandomArbitrary(5, (radius/4)))
+    );
 });
