@@ -92,6 +92,7 @@ const drawCanvas = () => {
 }
 
 window.addEventListener('load',  () => {
+    alert('loaded');
     onResize();
     balls.push(new Ball(
         getRandomArbitrary(radius, viewWidth - radius), 
