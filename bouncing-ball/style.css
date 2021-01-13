@@ -6,32 +6,49 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  perspective: 500px;
 }
 canvas {
-  background-color: #085f63;
+  background-color: #0d0d0d;
   width: 100%;
   height: 100%;
 }
+h1 {
+  position: absolute;
+  text-align: center;
+  width: 10em;
+  top: 40%;
+  left: 50%;
+  font-size: 1.5rem;
+  color: #b0daff;
+  transform: translate(-50%, 0);
+}
 .add-ball-btn {
   position: absolute;
-  top: 5%;
-  left: 5%;
+  bottom: 5%;
+  left: 50%;
   width: 5em;
   height: 2em;
   font-size: 1.5rem;
   text-align: center;
-  border: 0.05em solid #facf5a;
-  color: #facf5a;
+  border: 0.05em solid #0583f2;
+  color: #0583f2;
   font-weight: 300;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transform: translate(-50%, 0);
   transition: all 0.2s ease;
 }
 
 .add-ball-btn:hover {
-  background-color: #ff5959;
-  color: #085f63;
-  transform: scale(1.1);
+  background-color: #b0daff;
+  color: #0d0d0d;
+}
+
+@media screen and (min-width: 500px) {
+  h1 {
+    font-size: 3rem;
+  }
 }

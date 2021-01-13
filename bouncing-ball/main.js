@@ -3,6 +3,7 @@ const context = canvas.getContext('2d');
 const btn = document.querySelector('.add-ball-btn');
 const radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
 const pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
+const colorsOfBall = ['#0583F2', '#056CF2', '#0554F2'];
 
 class Ball {
     constructor(x, y, r, vx, vy) {
@@ -13,7 +14,8 @@ class Ball {
         this.vy = vy;
         this.originalVX = vx;
         this.originalVY = vy;
-        this.color = '#FACF5A';
+        this.color = colorsOfBall[Math.round(getRandomArbitrary(0, colorsOfBall.length-1))];
+        
     };
 
     draw = () => {
@@ -70,7 +72,7 @@ const onDown = (e) => {
         }
         ball.vx = deltaX;
         ball.vy = deltaY;
-        ball.color = '#FF5959';
+        ball.color = '#b0daff';
     });
 
 }
