@@ -2,9 +2,8 @@ const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 const btn = document.querySelector('.add-ball-btn');
 
-const radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
-const pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
-alert(pixelRatio);
+let radiu;
+let pixelRatio;
 const colorsOfBall = ['#0583F2', '#056CF2', '#0554F2'];
 const balls = [];
 let viewWidth;
@@ -93,6 +92,8 @@ const drawCanvas = () => {
 }
 
 window.addEventListener('load',  () => {
+    radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
+    pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
     onResize();
     balls.push(new Ball(
         getRandomArbitrary(radius, viewWidth - radius), 
@@ -108,6 +109,7 @@ window.addEventListener('load',  () => {
 window.addEventListener('resize', onResize);
 window.addEventListener('pointerdown', onDown);
 btn.addEventListener('click', () => {
+
     balls.push(new Ball(
         getRandomArbitrary(radius, viewWidth - radius), 
         getRandomArbitrary(radius, viewHeight - radius), 
