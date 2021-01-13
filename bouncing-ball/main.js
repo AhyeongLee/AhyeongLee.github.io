@@ -2,6 +2,8 @@ const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 const btn = document.querySelector('.add-ball-btn');
 const radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
+const pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
+
 class Ball {
     constructor(x, y, r, vx, vy) {
         this.x = x;
@@ -38,14 +40,14 @@ class Ball {
 
 
 const onResize = () => {
-    canvas.width = document.body.clientWidth * 2;
-    canvas.height = document.body.clientHeight * 2;
+    canvas.width = document.body.clientWidth * pixelRatio;
+    canvas.height = document.body.clientHeight * pixelRatio;
 };
 const onDown = (e) => {
     if (e.target.tagName === 'A') return;
     balls.forEach(ball => {
-        let deltaX = e.clientX * 2 - ball.x;
-        let deltaY = e.clientY * 2 - ball.y;
+        let deltaX = e.clientX * pixelRatio - ball.x;
+        let deltaY = e.clientY * pixelRatio - ball.y;
         const powV = Math.pow(Math.round(ball.originalVX),2) + Math.pow(Math.round(ball.originalVY),2);
         const min = Math.min(Math.abs(deltaX), Math.abs(deltaY));
         deltaX /= min;
