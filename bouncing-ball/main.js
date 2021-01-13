@@ -90,7 +90,7 @@ const drawCanvas = () => {
   
 onResize();
 const balls = [];
-balls.push(new Ball(getRandomArbitrary(radius, canvas.width - radius), getRandomArbitrary(radius, canvas.height - radius), radius, getRandomArbitrary(5, 20), getRandomArbitrary(5, 30)));
+balls.push(new Ball(getRandomArbitrary(radius, canvas.width - radius * pixelRatio), getRandomArbitrary(radius, canvas.height - radius * pixelRatio), radius * pixelRatio, getRandomArbitrary(5, (radius/3)/pixelRatio), getRandomArbitrary(5, (radius/3)/pixelRatio)));
 
 
 drawCanvas();
@@ -98,5 +98,5 @@ drawCanvas();
 window.addEventListener('resize', onResize);
 window.addEventListener('pointerdown', onDown);
 btn.addEventListener('click', () => {
-    balls.push(new Ball(getRandomArbitrary(radius, canvas.width - radius), getRandomArbitrary(radius, canvas.height - radius), radius, getRandomArbitrary(5, 20), getRandomArbitrary(5, 30)));
+    balls.push(new Ball(getRandomArbitrary(radius, canvas.width - radius * pixelRatio), getRandomArbitrary(radius, canvas.height - radius * pixelRatio), radius * pixelRatio, getRandomArbitrary(5, (radius/3)/pixelRatio), getRandomArbitrary(5, (radius/3)/pixelRatio)));
 });
