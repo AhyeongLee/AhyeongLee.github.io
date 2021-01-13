@@ -10,40 +10,40 @@ const balls = [];
 let viewWidth;
 let viewHeight;
 
-class Ball {
-    constructor(x, y, r, vx, vy) {
-        this.x = x;
-        this.y = y;
-        this.r = r;
-        this.vx = vx;
-        this.vy = vy;
-        this.originalVX = vx;
-        this.originalVY = vy;
-        this.color = colorsOfBall[Math.round(getRandomArbitrary(0, colorsOfBall.length-1))];
+// class Ball {
+//     constructor(x, y, r, vx, vy) {
+//         this.x = x;
+//         this.y = y;
+//         this.r = r;
+//         this.vx = vx;
+//         this.vy = vy;
+//         this.originalVX = vx;
+//         this.originalVY = vy;
+//         this.color = colorsOfBall[Math.round(getRandomArbitrary(0, colorsOfBall.length-1))];
         
-    };
+//     };
 
-    draw = () => {
-        context.beginPath();
-        context.fillStyle = this.color;
-        context.arc(this.x, this.y, this.r, 0, Math.PI*2, false);
-        context.fill();
-        this.x += this.vx;
-        this.y += this.vy;
-        this.bouncBall();
-    };
+//     draw = () => {
+//         context.beginPath();
+//         context.fillStyle = this.color;
+//         context.arc(this.x, this.y, this.r, 0, Math.PI*2, false);
+//         context.fill();
+//         this.x += this.vx;
+//         this.y += this.vy;
+//         this.bouncBall();
+//     };
 
-    bouncBall = () => {
-        if (this.x - radius < 0 || this.x + radius > viewWidth) {
-            this.vx *= -1;
-        }
-        if (this.y - radius < 0 || this.y + radius > viewHeight) {
-            this.vy *= -1;
-        }
-        this.x += (this.vx/10);
-        this.y += (this.vy/10);
-    }
-}
+//     bouncBall = () => {
+//         if (this.x - radius < 0 || this.x + radius > viewWidth) {
+//             this.vx *= -1;
+//         }
+//         if (this.y - radius < 0 || this.y + radius > viewHeight) {
+//             this.vy *= -1;
+//         }
+//         this.x += (this.vx/10);
+//         this.y += (this.vy/10);
+//     }
+// }
 
 
 // const onResize = () => {
