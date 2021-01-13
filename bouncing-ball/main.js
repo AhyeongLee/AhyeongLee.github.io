@@ -4,6 +4,7 @@ const btn = document.querySelector('.add-ball-btn');
 
 const radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
 const pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
+alert(pixelRatio);
 const colorsOfBall = ['#0583F2', '#056CF2', '#0554F2'];
 const balls = [];
 let viewWidth;
