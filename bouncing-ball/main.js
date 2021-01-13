@@ -92,18 +92,18 @@ const drawCanvas = () => {
     requestAnimationFrame(drawCanvas);
 }
 
-window.addEventListener('load',  () => {
-    alert('loaded');
-    // onResize();
-    // balls.push(new Ball(
-    //     getRandomArbitrary(radius, viewWidth - radius), 
-    //     getRandomArbitrary(radius, viewHeight - radius), 
-    //     radius, 
-    //     getRandomArbitrary(-(radius/8), (radius/8)), 
-    //     getRandomArbitrary(-(radius/8), (radius/8)))
-    // );
-    // drawCanvas();
-});
+// window.addEventListener('load',  () => {
+//     alert('loaded');
+//     onResize();
+//     balls.push(new Ball(
+//         getRandomArbitrary(radius, viewWidth - radius), 
+//         getRandomArbitrary(radius, viewHeight - radius), 
+//         radius, 
+//         getRandomArbitrary(-(radius/8), (radius/8)), 
+//         getRandomArbitrary(-(radius/8), (radius/8)))
+//     );
+//     drawCanvas();
+// });
 
 
 // window.addEventListener('resize', onResize);
