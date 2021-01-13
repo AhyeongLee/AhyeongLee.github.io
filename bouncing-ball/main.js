@@ -45,41 +45,41 @@ class Ball {
 }
 
 
-const onResize = () => {
-    viewWidth = document.body.clientWidth;
-    viewHeight = document.body.clientHeight;
-    canvas.width = viewWidth * pixelRatio;
-    canvas.height = viewHeight * pixelRatio;
-    context.scale(pixelRatio, pixelRatio);
-};
-const onDown = (e) => {
-    if (e.target.tagName === 'A') return;
+// const onResize = () => {
+//     viewWidth = document.body.clientWidth;
+//     viewHeight = document.body.clientHeight;
+//     canvas.width = viewWidth * pixelRatio;
+//     canvas.height = viewHeight * pixelRatio;
+//     context.scale(pixelRatio, pixelRatio);
+// };
+// const onDown = (e) => {
+//     if (e.target.tagName === 'A') return;
 
-    balls.forEach(ball => {
-        let deltaX = e.clientX - ball.x;
-        let deltaY = e.clientY - ball.y;
-        const powV = Math.pow(Math.round(ball.originalVX),2) + Math.pow(Math.round(ball.originalVY),2);
-        const min = Math.min(Math.abs(deltaX), Math.abs(deltaY));
-        deltaX /= min;
-        deltaY /= min;
-        const cnt = 1.1;
-        if ( powV > Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
-            while (powV > Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
-                deltaX *= cnt;
-                deltaY *= cnt;
-            }
-        } else if (powV < Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
-            while (powV < Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
-                deltaX /= cnt;
-                deltaY /= cnt;
-            }
-        }
-        ball.vx = deltaX;
-        ball.vy = deltaY;
-        ball.color = '#b0daff';
-    });
+//     balls.forEach(ball => {
+//         let deltaX = e.clientX - ball.x;
+//         let deltaY = e.clientY - ball.y;
+//         const powV = Math.pow(Math.round(ball.originalVX),2) + Math.pow(Math.round(ball.originalVY),2);
+//         const min = Math.min(Math.abs(deltaX), Math.abs(deltaY));
+//         deltaX /= min;
+//         deltaY /= min;
+//         const cnt = 1.1;
+//         if ( powV > Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
+//             while (powV > Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
+//                 deltaX *= cnt;
+//                 deltaY *= cnt;
+//             }
+//         } else if (powV < Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
+//             while (powV < Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
+//                 deltaX /= cnt;
+//                 deltaY /= cnt;
+//             }
+//         }
+//         ball.vx = deltaX;
+//         ball.vy = deltaY;
+//         ball.color = '#b0daff';
+//     });
 
-}
+// }
 
 const getRandomArbitrary = (min, max) => {
     return Math.random() * (max - min) + min;
@@ -93,20 +93,20 @@ const drawCanvas = () => {
 
 window.addEventListener('load',  () => {
     alert('loaded');
-    onResize();
-    balls.push(new Ball(
-        getRandomArbitrary(radius, viewWidth - radius), 
-        getRandomArbitrary(radius, viewHeight - radius), 
-        radius, 
-        getRandomArbitrary(-(radius/8), (radius/8)), 
-        getRandomArbitrary(-(radius/8), (radius/8)))
-    );
+    // onResize();
+    // balls.push(new Ball(
+    //     getRandomArbitrary(radius, viewWidth - radius), 
+    //     getRandomArbitrary(radius, viewHeight - radius), 
+    //     radius, 
+    //     getRandomArbitrary(-(radius/8), (radius/8)), 
+    //     getRandomArbitrary(-(radius/8), (radius/8)))
+    // );
     drawCanvas();
 });
 
 
-window.addEventListener('resize', onResize);
-window.addEventListener('pointerdown', onDown);
+// window.addEventListener('resize', onResize);
+// window.addEventListener('pointerdown', onDown);
 btn.addEventListener('click', () => {
     balls.push(new Ball(
         getRandomArbitrary(radius, viewWidth - radius), 
