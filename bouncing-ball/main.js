@@ -11,17 +11,17 @@ let viewWidth;
 let viewHeight;
 
 class Ball {
-    constructor(x, y, r, vx, vy) {
-        this.x = x;
-        this.y = y;
-        this.r = r;
-        this.vx = vx;
-        this.vy = vy;
-        this.originalVX = vx;
-        this.originalVY = vy;
-        this.color = colorsOfBall[Math.round(getRandomArbitrary(0, colorsOfBall.length-1))];
+    // constructor(x, y, r, vx, vy) {
+    //     this.x = x;
+    //     this.y = y;
+    //     this.r = r;
+    //     this.vx = vx;
+    //     this.vy = vy;
+    //     this.originalVX = vx;
+    //     this.originalVY = vy;
+    //     this.color = colorsOfBall[Math.round(getRandomArbitrary(0, colorsOfBall.length-1))];
         
-    }
+    // }
 
     // draw = () => {
     //     context.beginPath();
