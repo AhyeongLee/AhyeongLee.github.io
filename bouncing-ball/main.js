@@ -95,15 +95,15 @@ window.addEventListener('load',  () => {
     radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
     pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
     alert(pixelRatio);
-    onResize();
-    balls.push(new Ball(
-        getRandomArbitrary(radius, viewWidth - radius), 
-        getRandomArbitrary(radius, viewHeight - radius), 
-        radius, 
-        getRandomArbitrary(-(radius/8), (radius/8)), 
-        getRandomArbitrary(-(radius/8), (radius/8)))
-    );
-    drawCanvas();
+    // onResize();
+    // balls.push(new Ball(
+    //     getRandomArbitrary(radius, viewWidth - radius), 
+    //     getRandomArbitrary(radius, viewHeight - radius), 
+    //     radius, 
+    //     getRandomArbitrary(-(radius/8), (radius/8)), 
+    //     getRandomArbitrary(-(radius/8), (radius/8)))
+    // );
+    // drawCanvas();
 });
 
 
