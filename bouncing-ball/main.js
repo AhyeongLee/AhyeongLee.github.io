@@ -2,8 +2,7 @@ const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 const btn = document.querySelector('.add-ball-btn');
 
-const radius = Math.min(window.innerWidth, window.innerHeight) > 500 ? 50 : 30;
-alert(radius);
+const radius = Math.min(window.innerWidth, innerHeight) > 500 ? 50 : 30;
 const pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
 const colorsOfBall = ['#0583F2', '#056CF2', '#0554F2'];
 const balls = [];
@@ -21,7 +20,7 @@ class Ball {
         this.originalVY = vy;
         this.color = colorsOfBall[Math.round(getRandomArbitrary(0, colorsOfBall.length-1))];
         
-    }
+    };
 
     draw = () => {
         context.beginPath();
@@ -31,7 +30,7 @@ class Ball {
         this.x += this.vx;
         this.y += this.vy;
         this.bouncBall();
-    }
+    };
 
     bouncBall = () => {
         if (this.x - radius < 0 || this.x + radius > viewWidth) {
@@ -93,21 +92,20 @@ const drawCanvas = () => {
 }
 
 window.addEventListener('load',  () => {
-    alert('loaded');
-    // onResize();
-    // balls.push(new Ball(
-    //     getRandomArbitrary(radius, viewWidth - radius), 
-    //     getRandomArbitrary(radius, viewHeight - radius), 
-    //     radius, 
-    //     getRandomArbitrary(-(radius/8), (radius/8)), 
-    //     getRandomArbitrary(-(radius/8), (radius/8)))
-    // );
-    // drawCanvas();
+    onResize();
+    balls.push(new Ball(
+        getRandomArbitrary(radius, viewWidth - radius), 
+        getRandomArbitrary(radius, viewHeight - radius), 
+        radius, 
+        getRandomArbitrary(-(radius/8), (radius/8)), 
+        getRandomArbitrary(-(radius/8), (radius/8)))
+    );
+    drawCanvas();
 });
 
 
-// window.addEventListener('resize', onResize);
-// window.addEventListener('pointerdown', onDown);
+window.addEventListener('resize', onResize);
+window.addEventListener('pointerdown', onDown);
 btn.addEventListener('click', () => {
     balls.push(new Ball(
         getRandomArbitrary(radius, viewWidth - radius), 
