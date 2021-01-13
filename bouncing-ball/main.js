@@ -102,7 +102,7 @@ window.addEventListener('load',  () => {
     //     getRandomArbitrary(-(radius/8), (radius/8)), 
     //     getRandomArbitrary(-(radius/8), (radius/8)))
     // );
-    drawCanvas();
+    // drawCanvas();
 });
 
 
