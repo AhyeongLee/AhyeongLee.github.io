@@ -33,12 +33,14 @@ class Ball {
     };
 
     bouncBall = () => {
-        if (this.x < 0 || this.x > viewWidth) {
+        if (this.x - radius < 0 || this.x + radius > viewWidth) {
             this.vx *= -1;
         }
-        if (this.y < 0 || this.y > viewHeight) {
+        if (this.y - radius < 0 || this.y + radius > viewHeight) {
             this.vy *= -1;
         }
+        this.x += (this.vx/10);
+        this.y += (this.vy/10);
     }
 }
 
@@ -95,8 +97,8 @@ window.addEventListener('load',  () => {
         getRandomArbitrary(radius, viewWidth - radius), 
         getRandomArbitrary(radius, viewHeight - radius), 
         radius, 
-        getRandomArbitrary(5, (radius/4)), 
-        getRandomArbitrary(5, (radius/4)))
+        getRandomArbitrary(-(radius/8), (radius/8)), 
+        getRandomArbitrary(-(radius/8), (radius/8)))
     );
     drawCanvas();
 });
@@ -109,7 +111,7 @@ btn.addEventListener('click', () => {
         getRandomArbitrary(radius, viewWidth - radius), 
         getRandomArbitrary(radius, viewHeight - radius), 
         radius, 
-        getRandomArbitrary(5, (radius/4)), 
-        getRandomArbitrary(5, (radius/4)))
+        getRandomArbitrary(-(radius/8), (radius/8)), 
+        getRandomArbitrary(-(radius/8), (radius/8)))
     );
 });
