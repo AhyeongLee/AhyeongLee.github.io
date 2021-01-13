@@ -2,7 +2,7 @@ const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 const btn = document.querySelector('.add-ball-btn');
 
-let radiu;
+let radius;
 let pixelRatio;
 const colorsOfBall = ['#0583F2', '#056CF2', '#0554F2'];
 const balls = [];
