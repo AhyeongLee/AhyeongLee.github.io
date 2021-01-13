@@ -94,6 +94,7 @@ const drawCanvas = () => {
 window.addEventListener('load',  () => {
     radius = Math.min(innerWidth, innerHeight) > 500 ? 50 : 30;
     pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
+    alert(pixelRatio);
     onResize();
     balls.push(new Ball(
         getRandomArbitrary(radius, viewWidth - radius), 
@@ -109,7 +110,6 @@ window.addEventListener('load',  () => {
 window.addEventListener('resize', onResize);
 window.addEventListener('pointerdown', onDown);
 btn.addEventListener('click', () => {
-
     balls.push(new Ball(
         getRandomArbitrary(radius, viewWidth - radius), 
         getRandomArbitrary(radius, viewHeight - radius), 
