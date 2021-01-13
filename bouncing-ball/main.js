@@ -19,7 +19,6 @@ class Ball {
         this.originalVX = vx;
         this.originalVY = vy;
         this.color = colorsOfBall[Math.round(getRandomArbitrary(0, colorsOfBall.length-1))];
-        // console.log(x, y);
         
     };
 
@@ -34,10 +33,10 @@ class Ball {
     };
 
     bouncBall = () => {
-        if (this.x <= 0 || this.x >= viewWidth) {
+        if (this.x < 0 || this.x > viewWidth) {
             this.vx *= -1;
         }
-        if (this.y <= 0 || this.y >= viewHeight) {
+        if (this.y < 0 || this.y > viewHeight) {
             this.vy *= -1;
         }
     }
@@ -53,25 +52,22 @@ const onResize = () => {
 };
 const onDown = (e) => {
     if (e.target.tagName === 'A') return;
+
     balls.forEach(ball => {
-        let deltaX = e.clientX * pixelRatio - ball.x;
-        let deltaY = e.clientY * pixelRatio - ball.y;
+        let deltaX = e.clientX - ball.x;
+        let deltaY = e.clientY - ball.y;
         const powV = Math.pow(Math.round(ball.originalVX),2) + Math.pow(Math.round(ball.originalVY),2);
         const min = Math.min(Math.abs(deltaX), Math.abs(deltaY));
         deltaX /= min;
         deltaY /= min;
-        let cnt;
+        const cnt = 1.1;
         if ( powV > Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
-            cnt=1;
             while (powV > Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
-                cnt += 0.1;
                 deltaX *= cnt;
                 deltaY *= cnt;
             }
         } else if (powV < Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
-            cnt=1;
             while (powV < Math.pow(Math.round(deltaX),2) + Math.pow(Math.round(deltaY),2)) {
-                cnt += 0.2;
                 deltaX /= cnt;
                 deltaY /= cnt;
             }
@@ -84,7 +80,6 @@ const onDown = (e) => {
 }
 
 const getRandomArbitrary = (min, max) => {
-    // console.log(min, max);
     return Math.random() * (max - min) + min;
 }
 
@@ -92,7 +87,6 @@ const drawCanvas = () => {
     context.clearRect(0, 0, viewWidth, viewHeight);
     balls.forEach(ball => ball.draw());
     requestAnimationFrame(drawCanvas);
-
 }
 
 window.addEventListener('load',  () => {
@@ -101,8 +95,8 @@ window.addEventListener('load',  () => {
         getRandomArbitrary(radius, viewWidth - radius), 
         getRandomArbitrary(radius, viewHeight - radius), 
         radius, 
-        getRandomArbitrary(5, (radius/3)), 
-        getRandomArbitrary(5, (radius/3)))
+        getRandomArbitrary(5, (radius/4)), 
+        getRandomArbitrary(5, (radius/4)))
     );
     drawCanvas();
 });
